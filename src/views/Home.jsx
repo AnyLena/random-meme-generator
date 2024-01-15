@@ -13,7 +13,7 @@ const Home = ({ data, loading, memeNr, ownImg, setOwnImg, setMemeNr }) => {
       {loading && <div>Loading Meme ...</div>}
       {ownImg && (
         <div id="doemload-meme" className="meme-img">
-          <img src={ownImg} width="500" />
+          <img className="meme-img" src={ownImg} />
           <p className="meme-text meme-text--top">{toptext}</p>
           <p className="meme-text meme-text--bottom">{bottomtext}</p>
         </div>
@@ -21,7 +21,7 @@ const Home = ({ data, loading, memeNr, ownImg, setOwnImg, setMemeNr }) => {
       {!ownImg && data.length > 0 && (
         <>
           <div id="download-meme" className="meme-img">
-            <img src={data[memeNr].url} width="500" />
+            <img className="meme-img" src={data[memeNr].url} />
             <p className="meme-text meme-text--top">{toptext}</p>
             <p className="meme-text meme-text--bottom">{bottomtext}</p>
           </div>
