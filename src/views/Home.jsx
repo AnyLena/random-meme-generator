@@ -1,49 +1,24 @@
-import { useState } from "react";
-import useDownload from "../hooks/useDownload";
-import Nav from "../components/Nav";
+import { Link } from "react-router-dom";
 
-const Home = ({ data, loading, memeNr, ownImg, setOwnImg, setMemeNr }) => {
-  const [toptext, setToptext] = useState("One does not simply");
-  const [bottomtext, setBottomtext] = useState("Create random memes");
+const Home = () => {
+ 
 
   return (
     <>
-    <Nav setOwnImg={setOwnImg} setMemeNr={setMemeNr}/>
-      <h1>Meme Generator</h1>
-      {loading && <div>Loading Meme ...</div>}
-      {ownImg && (
-        <div id="doemload-meme" className="meme-img">
-          <img className="meme-img" src={ownImg} />
-          <p className="meme-text meme-text--top">{toptext}</p>
-          <p className="meme-text meme-text--bottom">{bottomtext}</p>
-        </div>
-      )}
-      {!ownImg && data.length > 0 && (
-        <>
-          <div id="download-meme" className="meme-img">
-            <img className="meme-img" src={data[memeNr].url} />
-            <p className="meme-text meme-text--top">{toptext}</p>
-            <p className="meme-text meme-text--bottom">{bottomtext}</p>
-          </div>
-        </>
-      )}
-      <h2>Write Some Text</h2>
-      <form>
-        <label htmlFor="meme-top">Top Text</label>
-        <input
-          type="text"
-          id="meme-top"
-          onChange={(e) => setToptext(e.target.value)}
-        />
-        <label htmlFor="meme-bottom">Bottom Text</label>
-        <input
-          type="text"
-          id="meme-bottom"
-          onChange={(e) => setBottomtext(e.target.value)}
-        />
-      </form>
-
-      <button className="download-btn" onClick={() => useDownload('download-meme')}>Download Meme</button>
+      
+      <div className="own-img-container main-content">
+        <h1 className="home">Welcome to the Meme Generator</h1>
+        <p className="home">
+          Unleash your creativity with our Meme Generator! Browse through a vast
+          collection of popular meme templates, add your own hilarious captions,
+          or upload your own image to create a unique meme. Whether you're a
+          meme veteran or a newbie, our Meme Generator makes meme creation easy
+          and fun. Start creating and sharing your memes now!
+        </p>
+        <button>
+          <Link to="/browse-memes">Start Creating</Link>
+        </button>
+      </div>
     </>
   );
 };
