@@ -1,10 +1,19 @@
 import Gallery from "../components/Gallery";
+import MemeCreator from "../components/MemeCreator";
+import useDownload from "../hooks/useDownload";
 
-const Browse = ({memeNr,setMemeNr,data,}) => {
+const Browse = ({memeNr,setMemeNr,data,loading}) => {
+
+  
+  const handleDownload = () => {
+    useDownload('random-meme-download');
+  };
 
 
   return (
-    <>
+    <div>
+    {data.length > 0 && <MemeCreator data={data} memeNr={memeNr} loading={loading} divId="random-meme-download"/>}
+    <button className="download-btn" onClick={handleDownload}>Download Meme</button>
       <h2>Browse Memes</h2>
       {memeNr !== 0 && (
         <button
@@ -31,7 +40,7 @@ const Browse = ({memeNr,setMemeNr,data,}) => {
         Random Meme
       </button>
       <Gallery data={data} setMemeNr={setMemeNr} memeNr={memeNr} />
-    </>
+    </div>
   );
 };
 
